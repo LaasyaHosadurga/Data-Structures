@@ -1,0 +1,54 @@
+#define size 10
+#include <stdio.h>
+int isEmpty(int *p2)
+{
+    if (*p2 == -1)
+        return 1;
+    else
+        return 0;
+}
+int isFull(int *p2)
+{
+    if (*p2 == (size-1))
+        return 1;
+    else
+        return 0;
+}
+void push(int aa[], int *p1)
+{  
+    int flag = isFull(*p1);
+    if (flag == 1)
+        printf ("Stack is full.\n");
+    else
+    {
+        printf ("Enter a number: ");
+        scanf ("%d", &aa[++(*p1)]);
+    }
+}
+void pop(int *p1)
+{  
+    int flag = isEmpty(*p1);
+    if (flag == 1)
+    printf ("Stack is empty.\n");
+    else
+    *p1--;
+}
+int main()
+{
+    int n, a[size], top = -1;
+    int *p = &top;
+    while (1)
+    {
+        printf("Enter 1 to add an element, 2 to remove the top element, 0 to stop: ");
+        scanf ("%d", &n);
+        if (n == 0)
+          break;
+        if (n == 1)
+            push(a, p);
+        if (n == 2)
+            pop(p);
+    }
+    for (int i = 0; i <= *p; i++)
+        printf ("%d ", a[i]);
+        return 0;
+}
